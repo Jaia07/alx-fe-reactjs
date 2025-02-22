@@ -13,11 +13,7 @@ function App() {
 
   return (
     <>
-      <button>-</button>
-      <span>0</span>
-      <button>+</button>
-
-
+      
       <WelcomeMessage />
       <Header />
       <MainContent />
