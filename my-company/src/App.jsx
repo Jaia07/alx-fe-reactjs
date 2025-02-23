@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Services from './pages/Services'
-import Contact from './pages/Contact'
+import Contact from './components/Contact'
 import About from './pages/About'
 
 function App() {
