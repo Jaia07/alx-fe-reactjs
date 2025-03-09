@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const RecipeList = () => {
     const filteredRecipes = useRecipeStore(state => state.filteredRecipes);
+    const recipes = useRecipeStore(state => state.recipes);
     const [selectedRecipeId, setSelectedRecipeId] = useState(null);
     const addFavorite = useRecipeStore(state => state.addFavorite);
     const removeFavorite = useRecipeStore(state => state.removeFavorite);
