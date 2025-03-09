@@ -7,16 +7,22 @@ import AddRecipeForm from './components/AddRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
 import EditRecipeForm from './components/EditRecipeForm'
 import DeleteRecipeButton from './components/DeleteRecipeButton'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
   return (
     <>
-      <RecipeList />
-      <AddRecipeForm />
-      <RecipeDetails />
-      {/* <EditRecipeForm /> */}
-      <DeleteRecipeButton />
+      <Router>
+        <div>
+          <h1>Recipe Sharing App</h1>
+          <AddRecipeForm />
+          <Routes>
+            <Route path="/" element={<RecipeList />} />
+            <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
+          </Routes>
+        </div>
+      </Router>
       
     </>
   )
