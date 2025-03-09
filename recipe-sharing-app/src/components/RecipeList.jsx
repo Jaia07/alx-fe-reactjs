@@ -1,21 +1,22 @@
 import React from "react";
 import {useRecipeStore} from "./recipeStore";
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 
 const RecipeList = () => {
-    const recipes = useRecipeStore(state => state.recipes);
+    const filteredRecipes = useRecipeStore(state => state.filteredRecipes);
     const [selectedRecipeId, setSelectedRecipeId] = useState(null);
 
 
     return (
       <div>
-        {recipes.map(recipe => (
-          <div key={recipe.id} onClick={() => setSelectedRecipeId(recipe.id)}>
+        {filteredRecipes.map(recipe => (
+          <div key={recipe.id} onClick={() => setSelectedRecipeId(selectedRecipeId === recipe.id ? null : recipe.id)}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
           </div>
         ))}
-        {selectedRecipeId && <RecipeDetails recipeId={selectedRecipeId}/>}
+        {selectedRecipeId && <RecipeDetails recipeId={selectedRecipeId} />}
       </div>
     );
   }
