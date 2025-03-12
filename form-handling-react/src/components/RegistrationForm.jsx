@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const RegistrationForm = () => {
     const [ formData, setFormData ] = useState({ username: '', email: '', password: '' });
+    const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -10,6 +11,27 @@ const RegistrationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let newErrors = {};
+
+        if (!formData.username.trim()) {
+            newErrors.username = "Username is required";
+        }
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = "Invalid email format";
+        }
+        if (!formData.password.trim()) {
+            newErrors.password = "Password is required";
+        } else if (formData.password.length < 8) {
+            newErrors.password = "Password must be at least 8 characters";
+        }
+
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length === 0) {
+            console.log(formData);
+        }
         console.log(formData)
     }
 
