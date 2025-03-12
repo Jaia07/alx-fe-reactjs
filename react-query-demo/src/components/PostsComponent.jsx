@@ -30,6 +30,7 @@ const PostsComponent = () => {
             {posts.map(item => (
                 <div key={item.id}>{item.name}</div>
             ))}
+             <button onClick={() => refetch()}>Refetch</button> {/* Add refetch button */}
         </div>
     )
 }
