@@ -13,15 +13,15 @@ const RegistrationForm = () => {
         e.preventDefault();
         let newErrors = {};
 
-        if (!formData.username.trim()) {
+        if (!username) {
             newErrors.username = "Username is required";
         }
-        if (!formData.email.trim()) {
+        if (!email) {
             newErrors.email = "Email is required";
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = "Invalid email format";
         }
-        if (!formData.password.trim()) {
+        if (!password) {
             newErrors.password = "Password is required";
         } else if (formData.password.length < 8) {
             newErrors.password = "Password must be at least 8 characters";
