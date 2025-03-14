@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link, useMatch } from 'react-router-dom'
+
+import { BrowserRouter as Router, Routes, Route, Link, useMatch, useParams } from 'react-router-dom'
 import ProfileDetails from './ProfileDetails';
 import ProfileSettings from './ProfileSettings';
 
@@ -7,7 +8,6 @@ const Profile = () => {
     // useRouteMatch provides the current URL and path
     let match = useMatch('/profile/*')
     let { path, url } = match || { path: '/profile', url: '/profile' };
-
     return (
         <div>
             <h2>Profile</h2>
