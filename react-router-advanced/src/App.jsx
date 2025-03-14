@@ -7,11 +7,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import BlogPost from './components/BlogPost'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
+import { AuthProvider } from './components/useAuth'
 
 function App() {
 
   return (
     <>
+    <AuthProvider>
       <Router>
         <nav>
           <ul>
@@ -30,6 +32,7 @@ function App() {
           <Route path='/blog/:id' element= {<BlogPost />} />
         </Routes>
       </Router>
+    </AuthProvider>
     </>
   )
 }

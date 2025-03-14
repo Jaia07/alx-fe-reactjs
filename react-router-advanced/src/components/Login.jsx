@@ -1,9 +1,15 @@
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from './useAuth';
+
 // Simple Login component
 const Login = () => {
+    const { login } = useAuth();
+    const navigate = useNavigate();
+
     const handleLogin = () => {
         // Logic to handle login, e.g., setting authentication token in local storage
-        localStorage.setItem('authToken', 'your-token');
-        window.location.href = '/profile'; // Redirect to the dashboard after login
+        login('your-token');
+        navigate('/profile'); // Redirect to the dashboard after login
     };
 
     return <button onClick={handleLogin}>Login</button>;

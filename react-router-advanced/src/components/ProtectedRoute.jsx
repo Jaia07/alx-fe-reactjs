@@ -1,14 +1,11 @@
 import { Route, Navigate, Outlet } from "react-router-dom"
-
-// Function that checks if the user is authenticated
-const isAuthenticated = () => {
-     // Replace with your authentication logic, for instance checking if a token exists in local storage
-     return localStorage.getItem('authToken') !== null;
-}
+import { useAuth } from "./useAuth";
 
 // Custom Route component that checks for authentication
 const ProtectedRoute = ({ children }) => {
-    if (!isAuthenticated()) {
+    const { user } = useAuth();
+
+    if (!user) {
         console.log('Not Authenticated');
         return <Navigate to="/login" replace />; // Redirect to login
     }
