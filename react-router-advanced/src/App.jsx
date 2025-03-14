@@ -24,7 +24,7 @@ function App() {
 
         <Routes>
           <Route path='/profile/*' element= {<Profile />} />
-          <Route path='/blog/:blogId' element= {<BlogPost />} />
+          <Route path='/blog/:id' element= {<BlogPost />} />
         </Routes>
       </Router>
     </>
