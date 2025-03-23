@@ -4,7 +4,7 @@ import data from '../data.json'
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [steps, setSteps] = useState('');
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
@@ -17,7 +17,7 @@ const AddRecipeForm = () => {
     if (!ingredients.trim()) {
       formErrors.ingredients = 'Ingredients are required';
     }
-    if (!instructions.trim()) {
+    if (!steps.trim()) {
       formErrors.instructions = 'Instructions are required';
     }
 
@@ -31,7 +31,7 @@ const AddRecipeForm = () => {
     // Clear the form after submission
     setTitle('');
     setIngredients('');
-    setInstructions('');
+    setSteps('');
     setErrors({}); // Clear errors after successful submission
   };
 
@@ -65,16 +65,16 @@ const AddRecipeForm = () => {
           {errors.ingredients && <p className="text-red-500 text-xs mt-1">{errors.ingredients}</p>}
         </div>
         <div>
-          <label htmlFor="instructions" className="block text-sm font-medium text-gray-700">
-            Instructions
+          <label htmlFor="steps" className="block text-sm font-medium text-gray-700">
+            Steps
           </label>
           <textarea
-            id="instructions"
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
+            id="steps"
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
             className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 ${errors.instructions ? 'border-red-500' : ''}`}
           />
-          {errors.instructions && <p className="text-red-500 text-xs mt-1">{errors.instructions}</p>}
+          {errors.steps && <p className="text-red-500 text-xs mt-1">{errors.steps}</p>}
         </div>
         <button
           type="submit"
