@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import data from '../data.json'
 
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
