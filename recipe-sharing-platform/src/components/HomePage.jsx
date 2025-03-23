@@ -42,6 +42,9 @@ const Homepage = () => {
                 </div>
               </div>
             ))}
+                <Link to="/add-recipe" className="mt-4 inline-block text-blue-500 hover:underline">
+                  Add Recipe
+                </Link>
           </div>
         </div>
       );
