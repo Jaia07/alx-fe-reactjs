@@ -9,31 +9,36 @@ const AddRecipeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let formErrors = {};
+    const validate = () => {
+        let formErrors = {};
 
-    if (!title.trim()) {
-      formErrors.title = 'Title is required';
-    }
-    if (!ingredients.trim()) {
-      formErrors.ingredients = 'Ingredients are required';
-    }
-    if (!steps.trim()) {
-      formErrors.instructions = 'Instructions are required';
+        if (!title.trim()) {
+        formErrors.title = 'Title is required';
+        }
+        if (!ingredients.trim()) {
+        formErrors.ingredients = 'Ingredients are required';
+        }
+        if (!steps.trim()) {
+        formErrors.instructions = 'Instructions are required';
+        }
+
+        if (Object.keys(formErrors).length > 0) {
+        setErrors(formErrors);
+        return;
+        }
     }
 
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      return;
-    }
-
-    // Implement form submission logic here
-    console.log({ title, ingredients, instructions });
-    // Clear the form after submission
-    setTitle('');
-    setIngredients('');
-    setSteps('');
-    setErrors({}); // Clear errors after successful submission
-  };
+    if (validate()) {
+        // Implement form submission logic here
+        console.log({ title, ingredients, instructions });
+  
+        // Clear the form after submission
+        setTitle('');
+        setIngredients('');
+        setInstructions('');
+        setErrors({}); // Clear errors after successful submission
+      }
+    };
 
   return (
     <div className="container mx-auto p-4">
