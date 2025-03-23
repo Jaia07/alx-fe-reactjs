@@ -4,13 +4,17 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_OASNZFixsbtAC_IQCeKIsrO-1_jdcFVaV0LLCdyXjPQ3vMN1bmkxI&usqp=CAE&shttps://via.placeholder.com/150"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW-_OASNZFixsbtAC_IQCeKIsrO-1_jdcFVaV0LLCdyXjPQ3vMN1bmkxI&usqp=CAE&shttps://via.placeholder.com/150",
+      "ingredients": ["Spaghetti", "Eggs", "Pecorino Romano cheese", "Guanciale (or bacon)", "Black pepper"],
+      "instructions": ["Cook the spaghetti until al dente.", "Fry the guanciale until crispy.", "Mix eggs and cheese.", "Combine everything and add pepper."]
     },
     {
       "id": 2,
       "title": "Chicken Tikka Masala",
       "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQWxo0uRM3tGQ7X-VkUScg3R9eDdJEsdOm-eVV6ji_XNt-1mDSaExheYlu0_yelufwe0fI35r7X4mssVws_5OY7vZ1M7w5BrK9bKPOM62Qx"
+      "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQWxo0uRM3tGQ7X-VkUScg3R9eDdJEsdOm-eVV6ji_XNt-1mDSaExheYlu0_yelufwe0fI35r7X4mssVws_5OY7vZ1M7w5BrK9bKPOM62Qx",
+      "ingredients": ["Chicken", "Yogurt", "Spices", "Tomato sauce", "Cream"],
+      "instructions": ["Marinate chicken in yogurt and spices.", "Grill the chicken.", "Cook the sauce.", "Add chicken and cream."]
     }
   ]
 }
