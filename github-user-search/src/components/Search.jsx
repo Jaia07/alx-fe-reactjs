@@ -324,7 +324,11 @@ function Search() {
       query += `repos:${minRepos}`; // Note: Keeping 'repos' prefix for GitHub API
     }
 
-    const queryParams = query ? { q: query } : {};
+    const queryParams = {};
+    if (username) queryParams.q = username;
+    if (location) queryParams.location = location;
+    if (minRepos) queryParams.minRepos = minRepos; // Changed 'repos' to 'minRepos' here as well
+
     console.log("queryParams:", queryParams);
 
     if (Object.keys(queryParams).length > 0) {
