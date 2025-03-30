@@ -10,19 +10,13 @@ function Search() {
   const [error, setError] = useState('');
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case 'username':
-        setUsername(value);
-        break;
-      case 'location':
-        setLocation(value);
-        break;
-      case 'repos':
-        setRepos(value);
-        break;
-      default:
-        break;
+    const { name } = event.target;
+    if (name === 'username') {
+      setUsername(event.target.value);
+    } else if (name === 'location') {
+      setLocation(event.target.value);
+    } else if (name === 'repos') {
+      setRepos(event.target.value);
     }
   };
 
@@ -45,28 +39,27 @@ function Search() {
       query += `repos:${repos}`;
     }
 
-    if (!query) {
-      setError('Please enter at least one search criteria.');
-      setLoading(false);
-      return;
-    }
-
-    const queryParams = { q: query };
+    const queryParams = query ? { q: query } : {};
     console.log("queryParams:", queryParams);
 
-    try {
-      const data = await advancedSearchUsers(queryParams);
-      setSearchResults(data.items);
-    } catch (error) {
-      setError('Looks like we encountered an error during the search.');
-      console.error("Error during advanced search:", error);
-      if (error.isAxiosError) {
-        console.error("Axios error details:", error.response);
-      } else {
-        console.error("Non-Axios error:", error);
+    if (Object.keys(queryParams).length > 0) {
+      try {
+        const data = await advancedSearchUsers(queryParams);
+        setSearchResults(data.items);
+      } catch (error) {
+        setError('Looks like we encountered an error during the search.');
+        console.error("Error during advanced search:", error);
+        if (error.isAxiosError) {
+          console.error("Axios error details:", error.response);
+        } else {
+          console.error("Non-Axios error:", error);
+        }
+      } finally {
+        setLoading(false);
       }
-    } finally {
+    } else {
       setLoading(false);
+      setError('Please enter at least one search criteria.');
     }
   };
 
