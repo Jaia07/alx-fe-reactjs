@@ -40,14 +40,13 @@ function Search() {
     }
 
     const queryParams = query ? { q: query } : {};
-    console.log("queryParams:", queryParams);
 
     if (Object.keys(queryParams).length > 0) {
       try {
         const data = await advancedSearchUsers(queryParams);
         setSearchResults(data.items);
       } catch (error) {
-        setError('Looks like we encountered an error during the search.');
+        setError('There was an issue fetching search results. Please try again later.');
         console.error("Error during advanced search:", error);
         if (error.isAxiosError) {
           console.error("Axios error details:", error.response);
@@ -116,7 +115,12 @@ function Search() {
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {searchResults.map(user => (
               <li key={user.id} className="bg-white shadow-md rounded p-4">
-                <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full mx-auto mb-2" />
+                <img
+                  src={`${user.avatar_url}?s=80`} // Suggestion: Request a smaller avatar size (80px)
+                  alt={user.login}
+                  className="w-16 h-16 rounded-full mx-auto mb-2"
+                  loading="lazy" // Good practice for images
+                />
                 <h3 className="text-lg font-semibold text-center">{user.login}</h3>
                 <p className="text-center"><a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Profile</a></p>
               </li>
