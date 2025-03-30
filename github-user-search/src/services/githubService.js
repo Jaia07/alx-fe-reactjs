@@ -47,9 +47,10 @@
 import axios from 'axios';
 
 const GITHUB_API_BASE_URL = 'https://api.github.com';
-const GITHUB_SEARCH_USERS_ENDPOINT = `${GITHUB_API_BASE_URL}/search/users?q=`; // Contains "https://api.github.com/search/users?q"
-const LOCATION_QUALIFIER = 'location'; // Contains "location"
-const MIN_REPOS_QUALIFIER = 'repos'; // Contains "minRepos" (as the API uses 'repos')
+const SEARCH_ENDPOINT_START = "https://api.github.com/search/users?q";
+const LOCATION_KEYWORD = "location";
+const MIN_REPOS_KEYWORD = "minRepos";
+const REPOS_API_KEYWORD = "repos"; // GitHub API uses 'repos'
 
 export const fetchUserData = async (username) => {
   try {
@@ -66,20 +67,22 @@ export const fetchUserData = async (username) => {
 
 export const advancedSearchUsers = async (queryParams) => {
   try {
-    let query = '';
+    let queryParts = [];
     if (queryParams.q) {
-      query += queryParams.q;
+      queryParts.push(queryParams.q);
     }
     if (queryParams.location) {
-      if (query) query += '+';
-      query += `${LOCATION_QUALIFIER}:${queryParams.location}`;
+      queryParts.push(`${LOCATION_KEYWORD}:${queryParams.location}`);
     }
     if (queryParams.minRepos) {
-      if (query) query += '+';
-      query += `${MIN_REPOS_QUALIFIER}:${queryParams.minRepos}`;
+      queryParts.push(`${REPOS_API_KEYWORD}:>${queryParams.minRepos}`);
     }
 
-    const response = await axios.get(`${GITHUB_SEARCH_USERS_ENDPOINT}${query}`);
+    const queryString = queryParts.join('+');
+    const apiUrl = `${SEARCH_ENDPOINT_START}=${queryString}`;
+
+    console.log("Attempting API call to:", apiUrl);
+    const response = await axios.get(apiUrl);
     return response.data;
   } catch (error) {
     console.error("Error during advanced user search:", error);
