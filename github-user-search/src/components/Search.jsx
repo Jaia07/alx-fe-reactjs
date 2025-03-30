@@ -195,7 +195,7 @@ function Search() {
           setSearchResults(data.items);
         }
       } catch (error) {
-        setError('Looks like we encountered an error during the search.');
+        setError('Looks like we cant find the user');
         console.error("Error during advanced search:", error);
         if (error.isAxiosError) {
           console.error("Axios error details:", error.response);
