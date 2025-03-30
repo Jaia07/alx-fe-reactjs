@@ -273,15 +273,15 @@ import { advancedSearchUsers, fetchUserData } from '../services/githubService';
 function Search() {
   const [username, setUsername] = useState('');
   const [location, setLocation] = useState('');
-  const [repos, setRepos] = useState('');
+  const [minRepos, setMinRepos] = useState(''); // Changed 'repos' to 'minRepos'
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searchInitiated, setSearchInitiated] = useState(false);
-  const [singleUserUsername, setSingleUserUsername] = useState(''); // New state for single user lookup
-  const [singleUserData, setSingleUserData] = useState(null);     // New state for single user data
-  const [singleUserLoading, setSingleUserLoading] = useState(false); // New loading state
-  const [singleUserError, setSingleUserError] = useState('');     // New error state
+  const [singleUserUsername, setSingleUserUsername] = useState('');
+  const [singleUserData, setSingleUserData] = useState(null);
+  const [singleUserLoading, setSingleUserLoading] = useState(false);
+  const [singleUserError, setSingleUserError] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -292,10 +292,10 @@ function Search() {
       case 'location':
         setLocation(value);
         break;
-      case 'repos':
-        setRepos(value);
+      case 'minRepos': // Changed 'repos' to 'minRepos'
+        setMinRepos(value);
         break;
-      case 'singleUserUsername': // Handle input for single user lookup
+      case 'singleUserUsername':
         setSingleUserUsername(value);
         break;
       default:
@@ -309,7 +309,7 @@ function Search() {
     setLoading(true);
     setError('');
     setSearchInitiated(true);
-    setSingleUserData(null); // Clear single user data
+    setSingleUserData(null);
 
     let query = '';
     if (username) {
@@ -319,9 +319,9 @@ function Search() {
       if (query) query += '+';
       query += `location:${location}`;
     }
-    if (repos) {
+    if (minRepos) { // Changed 'repos' to 'minRepos'
       if (query) query += '+';
-      query += `repos:${repos}`;
+      query += `repos:${minRepos}`; // Note: Keeping 'repos' prefix for GitHub API
     }
 
     const queryParams = query ? { q: query } : {};
@@ -330,7 +330,7 @@ function Search() {
     if (Object.keys(queryParams).length > 0) {
       try {
         const data = await advancedSearchUsers(queryParams);
-        if (data && data.items && data.items.length === 0 && location === '' && repos === '' && username !== '') {
+        if (data && data.items && data.items.length === 0 && location === '' && minRepos === '' && username !== '') { // Changed 'repos' to 'minRepos'
           setError("Looks like we cant find the user");
         } else {
           setSearchResults(data.items);
@@ -361,7 +361,7 @@ function Search() {
     setSingleUserData(null);
     setSingleUserLoading(true);
     setSingleUserError('');
-    setSearchResults([]); // Clear search results
+    setSearchResults([]);
 
     try {
       const userData = await fetchUserData(singleUserUsername);
@@ -403,13 +403,13 @@ function Search() {
           />
         </div>
         <div>
-          <label htmlFor="repos" className="block text-gray-700 text-sm font-bold mb-2">Minimum Repositories:</label>
+          <label htmlFor="minRepos" className="block text-gray-700 text-sm font-bold mb-2">Minimum Repositories:</label>
           <input
             type="number"
-            id="repos"
-            name="repos"
+            id="minRepos" // Changed 'repos' to 'minRepos'
+            name="minRepos" // Changed 'repos' to 'minRepos'
             placeholder="e.g., >10"
-            value={repos}
+            value={minRepos} // Changed 'repos' to 'minRepos'
             onChange={handleInputChange}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
