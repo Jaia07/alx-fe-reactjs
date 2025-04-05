@@ -71,6 +71,7 @@ const Search = () => {
                             {loading ? 'Fetching requested information...' : 'Search'}
                         </button>
                     </div>
+                    {/* Display error message if there are any */}
                     {error && <p className="text-red-500 bg-white/80 p-2 rounded mt-4 text-sm">{error}</p>}
                 </form>
             </div>
