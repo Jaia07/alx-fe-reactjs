@@ -1,12 +1,22 @@
-# React + Vite
+# Aura Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive web application built with React and Tailwind CSS that allows users to search for the current weather information of any city using the OpenWeatherMap API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search for current weather conditions by city name.
+- Displays temperature (in Celsius), weather description, humidity, and wind speed.
+- Shows a dynamic weather icon based on the conditions.
+- Responsive design for various screen sizes (mobile, tablet, desktop).
+- Uses the OpenWeatherMap API for weather data.
+- Simple routing between search and display views.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Vite)
+- Tailwind CSS
+- JavaScript
+- React Router DOM
+- OpenWeatherMap API
+- Fetch API
+- Vercel (Deployment)
