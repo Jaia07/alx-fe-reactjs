@@ -19,4 +19,4 @@ A simple and responsive web application built with React and Tailwind CSS that a
 - React Router DOM
 - OpenWeatherMap API
 - Fetch API
-- Vercel (Deployment)
+- Github Pages (Deployment)
